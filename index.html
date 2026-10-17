@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🌹 1 Rose, Every Language - Live Stream Simulation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+SC:wght@700&family=Noto+Sans+KR:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background: #020104;
+      color: #fff;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Live Stream Mobile/App Frame */
+    .live-container {
+      position: relative;
+      width: 100vw;
+      max-width: 480px;
+      height: 100vh;
+      max-height: 940px;
+      background: radial-gradient(circle at 50% 30%, #150312 0%, #060208 70%, #000 100%);
+      overflow: hidden;
+      box-shadow: 0 0 50px rgba(255, 23, 68, 0.25);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 64, 129, 0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Bar - Instagram/TikTok Live Style */
+    .live-top-bar {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      pointer-events: none;
+    }
+    .host-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 4px 12px 4px 5px;
+      border-radius: 30px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      pointer-events: auto;
+    }
+    .host-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff0055, #ff507a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      border: 2px solid #ff4081;
+    }
+    .host-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .host-sub {
+      font-size: 0.7rem;
+      color: #ff8da1;
+    }
+    .live-badge {
+      background: linear-gradient(90deg, #ff1744, #f50057);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulseLive 1.5s infinite;
+      box-shadow: 0 0 10px rgba(255, 23, 68, 0.7);
+    }
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.05); }
+    }
+    .viewer-count {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #eee;
+    }
+    .viewer-dot {
+      width: 7px;
+      height: 7px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #00e676;
+    }
+
+    /* Main Canvas Background */
+    canvas#roseCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    /* Floating Tap Hearts Layer */
+    .floating-hearts-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 40;
+      overflow: hidden;
+    }
+    .floating-heart {
+      position: absolute;
+      bottom: 80px;
+      font-size: 24px;
+      animation: floatUp 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      pointer-events: none;
+      filter: drop-shadow(0 0 8px rgba(255, 64, 129, 0.8));
+    }
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.6) rotate(0deg);
+      }
+      50% {
+        opacity: 0.9;
+        transform: translateY(-280px) scale(1.35) rotate(15deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-560px) scale(1.6) rotate(-20deg);
+      }
+    }
+
+    /* Floating Live Comments (TikTok / IG Style) */
+    .live-comments-container {
+      position: absolute;
+      bottom: 85px;
+      left: 14px;
+      width: 70%;
+      max-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 6px;
+      z-index: 45;
+      pointer-events: none;
+      overflow: hidden;
+      mask-image: linear-gradient(to top, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to top, black 75%, transparent 100%);
+    }
+    .comment-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(18, 10, 22, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 5px 11px;
+      border-radius: 18px;
+      font-size: 0.78rem;
+      backdrop-filter: blur(8px);
+      color: #fff;
+      animation: slideInComment 0.35s ease-out forwards;
+      max-width: 95%;
+      word-break: break-word;
+    }
+    @keyframes slideInComment {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .comment-user {
+      font-weight: 700;
+      color: #ff80ab;
+    }
+    .comment-flag {
+      font-size: 0.9rem;
+    }
+    .comment-text {
+      color: #f1e4ec;
+    }
+
+    /* Bottom Interactive Bar */
+    .live-bottom-bar {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 50;
+    }
+    .comment-input-box {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 10px 16px;
+      font-size: 0.86rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .comment-input-box span {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Interactive Like & Gift Buttons */
+    .action-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .action-btn:active {
+      transform: scale(0.85);
+    }
+    .like-btn {
+      background: linear-gradient(135deg, #ff1744, #f50057);
+      border: none;
+      box-shadow: 0 4px 18px rgba(255, 23, 68, 0.6);
+      animation: bounceHeart 2.5s infinite;
+    }
+    @keyframes bounceHeart {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    .like-counter-bubble {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #fff;
+      color: #e91e63;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    /* Screen Tap Burst Effect */
+    .tap-effect {
+      position: absolute;
+      pointer-events: none;
+      font-size: 28px;
+      transform: translate(-50%, -50%) scale(0);
+      animation: tapPop 0.65s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+      z-index: 60;
+    }
+    @keyframes tapPop {
+      0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+      50% { transform: translate(-50%, -80px) scale(1.4) rotate(15deg); opacity: 1; }
+      100% { transform: translate(-50%, -140px) scale(1) rotate(-10deg); opacity: 0; }
+    }
+
+    /* Progress Banner */
+    .bloom-progress {
+      position: absolute;
+      top: 66px;
+      left: 16px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      color: #fce4ec;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+      z-index: 50;
+    }
+    .progress-bar-inner {
+      width: 50px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ff4081, #00e676);
+      transition: width 0.1s linear;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="live-container" id="streamContainer">
+    
+    <!-- Top Header (Live Stream Info) -->
+    <div class="live-top-bar">
+      <div class="host-info">
+        <div class="host-avatar">🌹</div>
+        <div>
+          <div class="host-name">Global Rose Bloom</div>
+          <div class="host-sub">Every Language • 4K Live</div>
+        </div>
+        <div class="live-badge">LIVE</div>
+      </div>
+
+      <div class="viewer-count">
+        <div class="viewer-dot"></div>
+        <span id="viewerNum">12.4k</span>
+      </div>
+    </div>
+
+    <!-- Bloom Progress Indicator -->
+    <div class="bloom-progress">
+      <span>Petals Blooming</span>
+      <div class="progress-bar-inner">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span id="percentText">0%</span>
+    </div>
+
+    <!-- Main Canvas -->
+    <canvas id="roseCanvas" width="800" height="950"></canvas>
+
+    <!-- Floating Tap / Like Hearts Layer -->
+    <div class="floating-hearts-layer" id="heartsLayer"></div>
+
+    <!-- Live Stream Multilingual Comments -->
+    <div class="live-comments-container" id="commentsContainer"></div>
+
+    <!-- Bottom Action Bar -->
+    <div class="live-bottom-bar">
+      <div class="comment-input-box" id="tapPrompt">
+        <span>💬 Tap anywhere to send love...</span>
+      </div>
+
+      <!-- Quick Rose / Gift Button -->
+      <div class="action-btn" id="giftBtn" title="Send Rose Gift">
+        🌹
+      </div>
+
+      <!-- Live Like Button -->
+      <div class="action-btn like-btn" id="likeBtn" title="Double tap / Like">
+        ❤️
+        <div class="like-counter-bubble" id="likeCountDisplay">84k</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const W = 800;
+    const H = 950;
+    const GAP = 3;
+
+    // Multilingual Love Phrases
+    const PHRASES = [
+      "I LOVE YOU", "Te amo", "Je t'aime", "Ti amo", "Ich liebe dich",
+      "사랑해", "我爱你", "Nakupenda", "Mahal kita", "Eu te amo",
+      "Ik hou van jou", "Kocham cię", "Seni seviyorum", "Я тебя люблю",
+      "Te dua", "Anh yêu em", "Miluji tě", "S'agapo", "Szeretlek",
+      "Jeg elsker deg", "Volim te", "Taim i' ngra leat", "Amo-te",
+      "Aloha wau ia 'oe", "Ngiyakuthanda", "LOVE", "AMOUR", "AMOR",
+      "LIEBE", "मैं तुमसे प्यार करता हूँ"
+    ];
+
+    const FLOWER_COLORS = [
+      "#ff1744", "#d81b60", "#e91e63", "#c2185b",
+      "#ff4081", "#f50057", "#ff5252", "#b71c1c",
+      "#ff6b81", "#ee5253", "#ff7979", "#c9184a", "#ff2a6d"
+    ];
+
+    const LEAF_COLORS = [
+      "#00b894", "#2ecc71", "#27ae60", "#1abc9c",
+      "#16a085", "#55efc4", "#10ac84", "#20bf6b"
+    ];
+
+    const STEM_WORDS = ["LOVE", "AMOUR", "TE AMO", "TI AMO", "爱", "te amo", "प्यार"];
+
+    // Simulated Live Chat Stream in all languages
+    const LIVE_USERS = [
+      { name: "Aarav_07", flag: "🇮🇳", text: "मैं तुमसे प्यार करता हूँ! So beautiful ❤️" },
+      { name: "Sophia_m", flag: "🇫🇷", text: "Je t'aime! Incroyable! 🌹✨" },
+      { name: "Carlos.R", flag: "🇪🇸", text: "Te amo tanto mi vida 💕" },
+      { name: "Yuki_99", flag: "🇯🇵", text: "すごく綺麗... 愛してる 🌸" },
+      { name: "Minho_k", flag: "🇰🇷", text: "사랑해! 대박이다 진짜 💖" },
+      { name: "Chen_Wei", flag: "🇨🇳", text: "我爱你！太浪漫了吧 🌹" },
+      { name: "Elena_V", flag: "🇷🇺", text: "Я тебя люблю! Прекрасно! ❤️" },
+      { name: "Liam_US", flag: "🇺🇸", text: "Sending tons of love from NYC! 🔥" },
+      { name: "Giulia_roma", flag: "🇮🇹", text: "Ti amo per sempre! Bellissimo 🌹" },
+      { name: "Fatima_dxb", flag: "🇦🇪", text: "أحبك ❤️ Wonderful art!" },
+      { name: "Priya_Sharma", flag: "🇮🇳", text: "बहुत ही प्यारा गुलाब है! 🌹✨" }
+    ];
+
+    // Geometry calculations
+    function isFlower(x, y) {
+      const nx = (x - 400) / 185.0;
+      const ny = (y - 330) / 175.0;
+      if (nx * nx + ny * ny > 1.05) return false;
+      if (ny > 0) {
+        const maxW = (1.0 - ny * 0.72) * 1.05;
+        if (Math.abs(nx) > maxW) return false;
+      }
+      if (ny < -0.4 && Math.abs(nx) < 0.22 && ny < -0.82) return false;
+      return true;
+    }
+
+    function isStem(x, y) {
+      if (y < 500 || y > 860) return false;
+      const stemX = 400 + 15 * Math.sin((y - 500) * 0.013);
+      return Math.abs(x - stemX) <= 8;
+    }
+
+    function isLeftLeaf(x, y) {
+      const dx = x - 325;
+      const dy = y - 615;
+      const rad = -32 * (Math.PI / 180);
+      const rx = dx * Math.cos(rad) - dy * Math.sin(rad);
+      const ry = dx * Math.sin(rad) + dy * Math.cos(rad);
+      return (rx / 74.0) ** 2 + (ry / 26.0) ** 2 <= 1.0;
+    }
+
+    function isRightLeaf(x, y) {
+      const dx = x - 475;
+      const dy = y - 680;
+      const rad = 28 * (Math.PI / 180);
+      const rx = dx * Math.cos(rad) - dy * Math.sin(rad);
+      const ry = dx * Math.sin(rad) + dy * Math.cos(rad);
+      return (rx / 70.0) ** 2 + (ry / 24.0) ** 2 <= 1.0;
+    }
+
+    function isCalyx(x, y) {
+      if (y >= 500 && y <= 545) {
+        const maxD = 45 * (1 - (y - 500) / 45);
+        return Math.abs(x - 400) <= maxD + 8;
+      }
+      return false;
+    }
+
+    function collides(box, placed) {
+      const [x1, y1, x2, y2] = box;
+      for (let i = 0; i < placed.length; i++) {
+        const [px1, py1, px2, py2] = placed[i];
+        if (!(x2 < px1 || x1 > px2 || y2 < py1 || y1 > py2)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    const canvas = document.getElementById('roseCanvas');
+    const ctx = canvas.getContext('2d');
+    const streamContainer = document.getElementById('streamContainer');
+    const heartsLayer = document.getElementById('heartsLayer');
+    const commentsContainer = document.getElementById('commentsContainer');
+    const progressFill = document.getElementById('progressFill');
+    const percentText = document.getElementById('percentText');
+    const viewerNum = document.getElementById('viewerNum');
+    const likeCountDisplay = document.getElementById('likeCountDisplay');
+
+    let wordsToAnimate = [];
+    let placedBoxes = [];
+    let animIndex = 0;
+    let animTimer = null;
+    let totalLikes = 84210;
+
+    function generateWordPlan() {
+      wordsToAnimate = [];
+      placedBoxes = [];
+      animIndex = 0;
+
+      // 1. Petals
+      const petalSizes = [10, 11, 12, 13, 14, 16, 18, 20];
+      for (let i = 0; i < 2200; i++) {
+        const cx = Math.floor(Math.random() * 420) + 190;
+        const cy = Math.floor(Math.random() * 400) + 130;
+        if (isFlower(cx, cy)) {
+          const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
+          const size = petalSizes[Math.floor(Math.random() * petalSizes.length)];
+          ctx.font = `bold ${size}px "Poppins", "Segoe UI", sans-serif`;
+          const textMetrics = ctx.measureText(phrase);
+          const w = textMetrics.width;
+          const h = size * 1.15;
+          const box = [cx - w / 2 - GAP, cy - h / 2 - GAP, cx + w / 2 + GAP, cy + h / 2 + GAP];
+          if (!collides(box, placedBoxes)) {
+            placedBoxes.push(box);
+            const color = FLOWER_COLORS[Math.floor(Math.random() * FLOWER_COLORS.length)];
+            wordsToAnimate.push({ cx, cy, phrase, size, color });
+          }
+        }
+      }
+
+      // 2. Stem & Leaves
+      const leafSizes = [9, 10, 11, 12];
+      for (let i = 0; i < 1600; i++) {
+        const cx = Math.floor(Math.random() * 360) + 220;
+        const cy = Math.floor(Math.random() * 370) + 500;
+        const inStem = isStem(cx, cy);
+        const inLeft = isLeftLeaf(cx, cy);
+        const inRight = isRightLeaf(cx, cy);
+        const inCalyx = isCalyx(cx, cy);
+
+        if (inStem || inLeft || inRight || inCalyx) {
+          const phrase = inStem 
+            ? STEM_WORDS[Math.floor(Math.random() * STEM_WORDS.length)]
+            : PHRASES[Math.floor(Math.random() * PHRASES.length)];
+          const size = leafSizes[Math.floor(Math.random() * leafSizes.length)];
+          ctx.font = `bold ${size}px "Poppins", "Segoe UI", sans-serif`;
+          const textMetrics = ctx.measureText(phrase);
+          const w = textMetrics.width;
+          const h = size * 1.15;
+          const box = [cx - w / 2 - GAP, cy - h / 2 - GAP, cx + w / 2 + GAP, cy + h / 2 + GAP];
+          if (!collides(box, placedBoxes)) {
+            placedBoxes.push(box);
+            const color = LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)];
+            wordsToAnimate.push({ cx, cy, phrase, size, color });
+          }
+        }
+      }
+
+      // Shuffle order
+      for (let i = wordsToAnimate.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [wordsToAnimate[i], wordsToAnimate[j]] = [wordsToAnimate[j], wordsToAnimate[i]];
+      }
+    }
+
+    function drawBloom() {
+      const batchSize = 3;
+      for (let b = 0; b < batchSize; b++) {
+        if (animIndex < wordsToAnimate.length) {
+          const item = wordsToAnimate[animIndex];
+          ctx.font = `bold ${item.size}px "Poppins", "Segoe UI", "Noto Sans SC", "Noto Sans KR", "Noto Sans Devanagari", sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          
+          ctx.shadowColor = item.color;
+          ctx.shadowBlur = 5;
+          ctx.fillStyle = item.color;
+          ctx.fillText(item.phrase, item.cx, item.cy);
+          ctx.shadowBlur = 0;
+
+          animIndex++;
+        }
+      }
+
+      const pct = Math.min(100, Math.floor((animIndex / wordsToAnimate.length) * 100));
+      progressFill.style.width = pct + "%";
+      percentText.textContent = pct + "%";
+
+      if (animIndex < wordsToAnimate.length) {
+        animTimer = setTimeout(drawBloom, 22);
+      }
+    }
+
+    function startLiveStream() {
+      if (animTimer) clearTimeout(animTimer);
+      ctx.clearRect(0, 0, W, H);
+      
+      // Canvas Title
+      ctx.font = 'bold 24px "Cinzel", "Segoe UI", serif';
+      ctx.fillStyle = "#ff4081";
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = 'rgba(255, 64, 129, 0.6)';
+      ctx.shadowBlur = 12;
+      ctx.fillText("1 ROSE, EVERY LANGUAGE", W / 2, 70);
+      ctx.shadowBlur = 0;
+
+      generateWordPlan();
+      animTimer = setTimeout(drawBloom, 200);
+    }
+
+    // --- Floating Hearts & Tap Interaction ---
+    const HEART_ICONS = ["❤️", "💖", "🌹", "✨", "💕", "🌸", "🥰", "🔥"];
+
+    function spawnFloatingHeart(startX) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.textContent = HEART_ICONS[Math.floor(Math.random() * HEART_ICONS.length)];
+      
+      const x = startX !== undefined ? startX : (Math.random() * 80 + 10);
+      heart.style.right = (100 - x) + "%";
+      heart.style.animationDuration = (Math.random() * 1.2 + 1.8) + "s";
+      
+      heartsLayer.appendChild(heart);
+      setTimeout(() => heart.remove(), 2400);
+    }
+
+    // Tap anywhere effect
+    streamContainer.addEventListener('pointerdown', (e) => {
+      const rect = streamContainer.getBoundingClientRect();
+      const clientX = e.clientX - rect.left;
+      const clientY = e.clientY - rect.top;
+
+      // Tap pop icon
+      const tapPop = document.createElement('div');
+      tapPop.className = 'tap-effect';
+      tapPop.textContent = HEART_ICONS[Math.floor(Math.random() * HEART_ICONS.length)];
+      tapPop.style.left = clientX + "px";
+      tapPop.style.top = clientY + "px";
+      streamContainer.appendChild(tapPop);
+      setTimeout(() => tapPop.remove(), 700);
+
+      // Increment Likes
+      totalLikes++;
+      likeCountDisplay.textContent = (totalLikes / 1000).toFixed(1) + "k";
+
+      // Spawn floating hearts from bottom right
+      spawnFloatingHeart(Math.random() * 25 + 70);
+    });
+
+    // Auto Like Streams
+    setInterval(() => {
+      spawnFloatingHeart(Math.random() * 25 + 72);
+      totalLikes += Math.floor(Math.random() * 4) + 1;
+      likeCountDisplay.textContent = (totalLikes / 1000).toFixed(1) + "k";
+    }, 450);
+
+    // Live Viewer Fluctuations
+    setInterval(() => {
+      const count = (12.2 + Math.random() * 0.8).toFixed(1);
+      viewerNum.textContent = count + "k";
+    }, 3000);
+
+    // Live Comments Inflow
+    let commentIdx = 0;
+    function addLiveComment() {
+      const user = LIVE_USERS[commentIdx % LIVE_USERS.length];
+      commentIdx++;
+
+      const commentEl = document.createElement('div');
+      commentEl.className = 'comment-item';
+      commentEl.innerHTML = `<span class="comment-flag">${user.flag}</span> <span class="comment-user">${user.name}</span> <span class="comment-text">${user.text}</span>`;
+      
+      commentsContainer.appendChild(commentEl);
+
+      // Keep max 4 comments
+      if (commentsContainer.children.length > 4) {
+        commentsContainer.removeChild(commentsContainer.children[0]);
+      }
+
+      const nextDelay = Math.random() * 1800 + 1200;
+      setTimeout(addLiveComment, nextDelay);
+    }
+
+    // Gift Button Click
+    document.getElementById('giftBtn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => spawnFloatingHeart(Math.random() * 30 + 65), i * 80);
+      }
+      totalLikes += 50;
+      likeCountDisplay.textContent = (totalLikes / 1000).toFixed(1) + "k";
+    });
+
+    // Start Everything
+    startLiveStream();
+    setTimeout(addLiveComment, 800);
+  </script>
+</body>
+</html>
