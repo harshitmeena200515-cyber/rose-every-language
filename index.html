@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>🌹 1 Rose, Every Language - Live Stream Simulation</title>
+  <title>🌹 For Pihu My Sweetheart - Forever Yours</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Noto+Sans+Devanagari:wght@600&family=Noto+Sans+SC:wght@700&family=Noto+Sans+KR:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -18,7 +18,7 @@
     body {
       background: #020104;
       color: #fff;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: 'Poppins', -apple-system, sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -26,104 +26,34 @@
       overflow: hidden;
     }
 
-    /* Live Stream Mobile/App Frame */
-    .live-container {
+    /* Luxury Romantic Screen Frame */
+    .app-screen {
       position: relative;
       width: 100vw;
-      max-width: 480px;
+      max-width: 460px;
       height: 100vh;
-      max-height: 940px;
-      background: radial-gradient(circle at 50% 30%, #150312 0%, #060208 70%, #000 100%);
+      max-height: 920px;
+      background: radial-gradient(circle at 50% 25%, #2a0316 0%, #11020d 50%, #030005 100%);
       overflow: hidden;
-      box-shadow: 0 0 50px rgba(255, 23, 68, 0.25);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 64, 129, 0.2);
+      box-shadow: 0 0 60px rgba(255, 30, 86, 0.35), 0 0 100px rgba(0, 0, 0, 0.9);
+      border-radius: 28px;
+      border: 1.5px solid rgba(255, 75, 130, 0.3);
       display: flex;
       flex-direction: column;
     }
 
-    /* Top Bar - Instagram/TikTok Live Style */
-    .live-top-bar {
+    /* Ambient Romantic Sparkle background */
+    .sparkle-canvas {
       position: absolute;
-      top: 16px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 50;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-    }
-    .host-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(0, 0, 0, 0.45);
-      padding: 4px 12px 4px 5px;
-      border-radius: 30px;
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      pointer-events: auto;
-    }
-    .host-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ff0055, #ff507a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      border: 2px solid #ff4081;
-    }
-    .host-name {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.2;
-    }
-    .host-sub {
-      font-size: 0.7rem;
-      color: #ff8da1;
-    }
-    .live-badge {
-      background: linear-gradient(90deg, #ff1744, #f50057);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      animation: pulseLive 1.5s infinite;
-      box-shadow: 0 0 10px rgba(255, 23, 68, 0.7);
-    }
-    @keyframes pulseLive {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.05); }
-    }
-    .viewer-count {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(0, 0, 0, 0.45);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #eee;
-    }
-    .viewer-dot {
-      width: 7px;
-      height: 7px;
-      background: #00e676;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #00e676;
+      z-index: 5;
     }
 
-    /* Main Canvas Background */
+    /* Main Typography Rose Canvas */
     canvas#roseCanvas {
       position: absolute;
       top: 0;
@@ -133,8 +63,105 @@
       z-index: 10;
     }
 
-    /* Floating Tap Hearts Layer */
-    .floating-hearts-layer {
+    /* Top Romantic Header */
+    .header-bar {
+      position: absolute;
+      top: 18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 30;
+      pointer-events: none;
+      padding: 0 16px;
+    }
+    .crown-tag {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #ff9ebb;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .main-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.3rem, 7vw, 2.8rem);
+      background: linear-gradient(135deg, #fff 10%, #ff80ab 50%, #ff1744 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      filter: drop-shadow(0 2px 18px rgba(255, 23, 68, 0.7));
+    }
+    .sub-title {
+      font-size: 0.8rem;
+      color: #ffd1dc;
+      letter-spacing: 2px;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    /* Floating Heart Photo Bubbles */
+    .photo-bubbles-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 25;
+    }
+    .heart-bubble {
+      position: absolute;
+      pointer-events: auto;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .heart-bubble:hover, .heart-bubble:active {
+      transform: scale(1.15) !important;
+      z-index: 50;
+    }
+    
+    /* Heart Frame SVG Wrapper */
+    .heart-frame {
+      position: relative;
+      filter: drop-shadow(0 4px 14px rgba(255, 23, 68, 0.65));
+      animation: floatGently 4s ease-in-out infinite alternate;
+    }
+    @keyframes floatGently {
+      0% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-7px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(-2deg); }
+    }
+    .bubble-tag {
+      background: rgba(18, 5, 14, 0.8);
+      border: 1px solid rgba(255, 105, 180, 0.6);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 12px;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      white-space: nowrap;
+    }
+
+    /* Specific Positions for 4 Photo Bubbles around the Rose */
+    #bubble1 { top: 15%; left: 6%; }
+    #bubble2 { top: 14%; right: 6%; }
+    #bubble3 { top: 48%; left: 4%; }
+    #bubble4 { top: 47%; right: 4%; }
+
+    /* Floating Tapped Love Particles */
+    .tap-layer {
       position: absolute;
       top: 0;
       left: 0;
@@ -146,307 +173,295 @@
     }
     .floating-heart {
       position: absolute;
-      bottom: 80px;
-      font-size: 24px;
-      animation: floatUp 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      font-size: 26px;
+      animation: floatUpBurst 2.5s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
       pointer-events: none;
-      filter: drop-shadow(0 0 8px rgba(255, 64, 129, 0.8));
+      filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.8));
     }
-    @keyframes floatUp {
-      0% {
-        opacity: 1;
-        transform: translateY(0) scale(0.6) rotate(0deg);
-      }
-      50% {
-        opacity: 0.9;
-        transform: translateY(-280px) scale(1.35) rotate(15deg);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-560px) scale(1.6) rotate(-20deg);
-      }
+    @keyframes floatUpBurst {
+      0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(0deg); }
+      50% { opacity: 0.95; transform: translateY(-320px) scale(1.3) rotate(20deg); }
+      100% { opacity: 0; transform: translateY(-640px) scale(1.6) rotate(-25deg); }
     }
 
-    /* Floating Live Comments (TikTok / IG Style) */
-    .live-comments-container {
+    /* Tap Explosion Pop */
+    .tap-pop {
       position: absolute;
-      bottom: 85px;
-      left: 14px;
-      width: 70%;
-      max-height: 220px;
+      pointer-events: none;
+      font-size: 32px;
+      transform: translate(-50%, -50%) scale(0);
+      animation: popEffect 0.65s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+      z-index: 55;
+    }
+    @keyframes popEffect {
+      0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+      50% { transform: translate(-50%, -70px) scale(1.4) rotate(15deg); opacity: 1; }
+      100% { transform: translate(-50%, -130px) scale(1) rotate(-15deg); opacity: 0; }
+    }
+
+    /* Bottom Romantic Dedicated Footer */
+    .footer-bar {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 35;
+      background: rgba(22, 6, 18, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 64, 129, 0.3);
+      border-radius: 35px;
+      padding: 8px 14px 8px 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    }
+    .dedicated-text {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      gap: 6px;
-      z-index: 45;
-      pointer-events: none;
-      overflow: hidden;
-      mask-image: linear-gradient(to top, black 75%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to top, black 75%, transparent 100%);
     }
-    .comment-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(18, 10, 22, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 5px 11px;
-      border-radius: 18px;
-      font-size: 0.78rem;
-      backdrop-filter: blur(8px);
-      color: #fff;
-      animation: slideInComment 0.35s ease-out forwards;
-      max-width: 95%;
-      word-break: break-word;
+    .dedicated-to {
+      font-size: 0.68rem;
+      color: #ff9ebb;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
     }
-    @keyframes slideInComment {
-      from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-    .comment-user {
+    .dedicated-name {
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #ff80ab;
+      background: linear-gradient(90deg, #fff, #ff80ab);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
     }
-    .comment-flag {
-      font-size: 0.9rem;
-    }
-    .comment-text {
-      color: #f1e4ec;
-    }
-
-    /* Bottom Interactive Bar */
-    .live-bottom-bar {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      right: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 50;
-    }
-    .comment-input-box {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 25px;
-      padding: 10px 16px;
-      font-size: 0.86rem;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-    .comment-input-box span {
-      color: rgba(255, 255, 255, 0.6);
-    }
-    
-    /* Interactive Like & Gift Buttons */
     .action-btn {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, #ff1744, #f50057);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.35rem;
       cursor: pointer;
-      position: relative;
-      transition: transform 0.15s ease, background 0.2s ease;
-    }
-    .action-btn:hover {
-      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 15px rgba(255, 23, 68, 0.6);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      transition: transform 0.15s ease;
+      animation: pulseHeartBtn 2.2s infinite;
     }
     .action-btn:active {
-      transform: scale(0.85);
+      transform: scale(0.88);
     }
-    .like-btn {
-      background: linear-gradient(135deg, #ff1744, #f50057);
-      border: none;
-      box-shadow: 0 4px 18px rgba(255, 23, 68, 0.6);
-      animation: bounceHeart 2.5s infinite;
-    }
-    @keyframes bounceHeart {
+    @keyframes pulseHeartBtn {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.08); }
     }
-    .like-counter-bubble {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: #fff;
-      color: #e91e63;
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 1px 6px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
 
-    /* Screen Tap Burst Effect */
-    .tap-effect {
+    /* Modal / Popup for viewing Photo full size */
+    .photo-modal {
       position: absolute;
-      pointer-events: none;
-      font-size: 28px;
-      transform: translate(-50%, -50%) scale(0);
-      animation: tapPop 0.65s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
-      z-index: 60;
-    }
-    @keyframes tapPop {
-      0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
-      50% { transform: translate(-50%, -80px) scale(1.4) rotate(15deg); opacity: 1; }
-      100% { transform: translate(-50%, -140px) scale(1) rotate(-10deg); opacity: 0; }
-    }
-
-    /* Progress Banner */
-    .bloom-progress {
-      position: absolute;
-      top: 66px;
-      left: 16px;
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      padding: 4px 10px;
-      font-size: 0.72rem;
-      color: #fce4ec;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      backdrop-filter: blur(8px);
-      z-index: 50;
-    }
-    .progress-bar-inner {
-      width: 50px;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .progress-fill {
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #ff4081, #00e676);
-      transition: width 0.1s linear;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(10px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .modal-heart-img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #ff4081;
+      box-shadow: 0 0 35px rgba(255, 64, 129, 0.8);
+      animation: zoomModal 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+    @keyframes zoomModal {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-quote {
+      margin-top: 20px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #ff80ab;
+      text-align: center;
+      text-shadow: 0 0 15px rgba(255, 23, 68, 0.7);
+    }
+    .modal-close-btn {
+      margin-top: 18px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 7px 22px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="live-container" id="streamContainer">
-    
-    <!-- Top Header (Live Stream Info) -->
-    <div class="live-top-bar">
-      <div class="host-info">
-        <div class="host-avatar">🌹</div>
-        <div>
-          <div class="host-name">Global Rose Bloom</div>
-          <div class="host-sub">Every Language • 4K Live</div>
-        </div>
-        <div class="live-badge">LIVE</div>
-      </div>
+  <!-- SVG Definition for Perfect Heart Clip-Path -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <!-- Standardized 100x100 Heart Path -->
+      <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5, 0.85 
+                 C 0.1, 0.55, 0, 0.35, 0, 0.25 
+                 C 0, 0.1, 0.12, 0, 0.28, 0 
+                 C 0.38, 0, 0.46, 0.08, 0.5, 0.16 
+                 C 0.54, 0.08, 0.62, 0, 0.72, 0 
+                 C 0.88, 0, 1, 0.1, 1, 0.25 
+                 C 1, 0.35, 0.9, 0.55, 0.5, 0.85 Z" />
+      </clipPath>
+    </defs>
+  </svg>
 
-      <div class="viewer-count">
-        <div class="viewer-dot"></div>
-        <span id="viewerNum">12.4k</span>
+  <div class="app-screen" id="appScreen">
+
+    <!-- Romantic Header -->
+    <div class="header-bar">
+      <div class="crown-tag">
+        <span>✨</span> ONLY FOR PIHU <span>✨</span>
       </div>
+      <div class="main-title">Pihu My Sweetheart</div>
+      <div class="sub-title">MY LOVE • BITTU • FOREVER</div>
     </div>
 
-    <!-- Bloom Progress Indicator -->
-    <div class="bloom-progress">
-      <span>Petals Blooming</span>
-      <div class="progress-bar-inner">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <span id="percentText">0%</span>
-    </div>
+    <!-- Background Star Sparkles -->
+    <canvas class="sparkle-canvas" id="sparkleCanvas"></canvas>
 
-    <!-- Main Canvas -->
+    <!-- Main Typographic Rose Canvas -->
     <canvas id="roseCanvas" width="800" height="950"></canvas>
 
-    <!-- Floating Tap / Like Hearts Layer -->
-    <div class="floating-hearts-layer" id="heartsLayer"></div>
-
-    <!-- Live Stream Multilingual Comments -->
-    <div class="live-comments-container" id="commentsContainer"></div>
-
-    <!-- Bottom Action Bar -->
-    <div class="live-bottom-bar">
-      <div class="comment-input-box" id="tapPrompt">
-        <span>💬 Tap anywhere to send love...</span>
+    <!-- 4 Beautiful Heart Photo Bubbles on Sides of the Rose -->
+    <div class="photo-bubbles-layer">
+      
+      <!-- Bubble 1: Top-Left -->
+      <div class="heart-bubble" id="bubble1" data-img="images/face1.jpg" data-quote="My Heart Beats Only For You, Pihu ❤️">
+        <div class="heart-frame" style="width: 84px; height: 84px;">
+          <svg viewBox="0 0 100 100" width="84" height="84">
+            <!-- Glowing Heart Border -->
+            <path d="M 50, 86 C 10, 56 0, 36 0, 26 C 0, 11 12, 1 28, 1 C 38, 1 46, 9 50, 17 C 54, 9 62, 1 72, 1 C 88, 1 100, 11 100, 26 C 100, 36 90, 56 50, 86 Z" fill="none" stroke="#ff4081" stroke-width="4" filter="drop-shadow(0 0 6px #ff1744)"/>
+            <!-- Heart Cropped Image -->
+            <image href="images/face1.jpg" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#heartClip)" />
+          </svg>
+        </div>
+        <div class="bubble-tag">Pihu My Love 💕</div>
       </div>
 
-      <!-- Quick Rose / Gift Button -->
-      <div class="action-btn" id="giftBtn" title="Send Rose Gift">
-        🌹
+      <!-- Bubble 2: Top-Right -->
+      <div class="heart-bubble" id="bubble2" data-img="images/face2.jpg" data-quote="The Most Beautiful Smile in the World ✨">
+        <div class="heart-frame" style="width: 86px; height: 86px; animation-delay: -1.5s;">
+          <svg viewBox="0 0 100 100" width="86" height="86">
+            <path d="M 50, 86 C 10, 56 0, 36 0, 26 C 0, 11 12, 1 28, 1 C 38, 1 46, 9 50, 17 C 54, 9 62, 1 72, 1 C 88, 1 100, 11 100, 26 C 100, 36 90, 56 50, 86 Z" fill="none" stroke="#ff0055" stroke-width="4" filter="drop-shadow(0 0 6px #ff0055)"/>
+            <image href="images/face2.jpg" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#heartClip)" />
+          </svg>
+        </div>
+        <div class="bubble-tag">My Sweetheart 💖</div>
       </div>
 
-      <!-- Live Like Button -->
-      <div class="action-btn like-btn" id="likeBtn" title="Double tap / Like">
-        ❤️
-        <div class="like-counter-bubble" id="likeCountDisplay">84k</div>
+      <!-- Bubble 3: Mid-Left -->
+      <div class="heart-bubble" id="bubble3" data-img="images/face3.jpg" data-quote="You Are My Cutest Bittu Forever 🥰">
+        <div class="heart-frame" style="width: 82px; height: 82px; animation-delay: -0.8s;">
+          <svg viewBox="0 0 100 100" width="82" height="82">
+            <path d="M 50, 86 C 10, 56 0, 36 0, 26 C 0, 11 12, 1 28, 1 C 38, 1 46, 9 50, 17 C 54, 9 62, 1 72, 1 C 88, 1 100, 11 100, 26 C 100, 36 90, 56 50, 86 Z" fill="none" stroke="#ff4081" stroke-width="4" filter="drop-shadow(0 0 6px #ff4081)"/>
+            <image href="images/face3.jpg" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#heartClip)" />
+          </svg>
+        </div>
+        <div class="bubble-tag">Bittu 😘</div>
       </div>
+
+      <!-- Bubble 4: Mid-Right -->
+      <div class="heart-bubble" id="bubble4" data-img="images/face4.jpg" data-quote="I Love You More Than Anything In Life 🌹">
+        <div class="heart-frame" style="width: 86px; height: 86px; animation-delay: -2.3s;">
+          <svg viewBox="0 0 100 100" width="86" height="86">
+            <path d="M 50, 86 C 10, 56 0, 36 0, 26 C 0, 11 12, 1 28, 1 C 38, 1 46, 9 50, 17 C 54, 9 62, 1 72, 1 C 88, 1 100, 11 100, 26 C 100, 36 90, 56 50, 86 Z" fill="none" stroke="#ff1744" stroke-width="4" filter="drop-shadow(0 0 6px #ff1744)"/>
+            <image href="images/face4.jpg" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#heartClip)" />
+          </svg>
+        </div>
+        <div class="bubble-tag">I Love You ❤️</div>
+      </div>
+
+    </div>
+
+    <!-- Floating Burst Taps Layer -->
+    <div class="tap-layer" id="tapLayer"></div>
+
+    <!-- Bottom Dedicated Bar -->
+    <div class="footer-bar">
+      <div class="dedicated-text">
+        <span class="dedicated-to">Dedicated To</span>
+        <span class="dedicated-name">Pihu (Bittu) ❤️</span>
+      </div>
+      <div class="action-btn" id="loveBurstBtn" title="Send Love Burst">
+        💖
+      </div>
+    </div>
+
+    <!-- Photo Zoom Modal -->
+    <div class="photo-modal" id="photoModal">
+      <img id="modalImg" class="modal-heart-img" src="" alt="Pihu">
+      <div class="modal-quote" id="modalQuote">My Heart Beats Only For You ❤️</div>
+      <button class="modal-close-btn" id="modalCloseBtn">Close 💕</button>
     </div>
 
   </div>
 
   <script>
+    // --- Canvas & Typography Settings ---
     const W = 800;
     const H = 950;
-    const GAP = 3;
+    const GAP = 3.5;
 
-    // Multilingual Love Phrases
+    // ONLY the user's requested dedicated English romantic words
     const PHRASES = [
-      "I LOVE YOU", "Te amo", "Je t'aime", "Ti amo", "Ich liebe dich",
-      "사랑해", "我爱你", "Nakupenda", "Mahal kita", "Eu te amo",
-      "Ik hou van jou", "Kocham cię", "Seni seviyorum", "Я тебя люблю",
-      "Te dua", "Anh yêu em", "Miluji tě", "S'agapo", "Szeretlek",
-      "Jeg elsker deg", "Volim te", "Taim i' ngra leat", "Amo-te",
-      "Aloha wau ia 'oe", "Ngiyakuthanda", "LOVE", "AMOUR", "AMOR",
-      "LIEBE", "मैं तुमसे प्यार करता हूँ"
+      "PIHU MY LOVE",
+      "I LOVE YOU",
+      "MY SWEETHEART",
+      "BITTU",
+      "PIHU",
+      "MY LOVE",
+      "SWEETHEART",
+      "I LOVE U",
+      "BITTU MY LOVE",
+      "PIHU I LOVE YOU",
+      "FOREVER YOURS",
+      "MY BEAUTIFUL PIHU",
+      "MY QUEEN",
+      "MY JAAN",
+      "ONLY YOU"
     ];
 
-    const FLOWER_COLORS = [
-      "#ff1744", "#d81b60", "#e91e63", "#c2185b",
-      "#ff4081", "#f50057", "#ff5252", "#b71c1c",
-      "#ff6b81", "#ee5253", "#ff7979", "#c9184a", "#ff2a6d"
+    // Elegant, glowing vibrant romantic palette
+    const PETAL_COLORS = [
+      "#ff1744", "#ff0055", "#f50057", "#e91e63",
+      "#ff4081", "#ff5252", "#ff2a6d", "#ff7597",
+      "#ff6b81", "#ff3366", "#d81b60", "#ff80ab",
+      "#ff4d6d", "#c9184a", "#ff758f", "#fff0f5"
+    ];
+
+    const STEM_WORDS = [
+      "PIHU", "MY LOVE", "BITTU", "LOVE", "I LOVE U", "FOREVER", "MY SWEETHEART"
     ];
 
     const LEAF_COLORS = [
-      "#00b894", "#2ecc71", "#27ae60", "#1abc9c",
-      "#16a085", "#55efc4", "#10ac84", "#20bf6b"
+      "#00e676", "#00c853", "#2ecc71", "#10ac84",
+      "#1abc9c", "#05c46b", "#69f0ae", "#26de81"
     ];
 
-    const STEM_WORDS = ["LOVE", "AMOUR", "TE AMO", "TI AMO", "爱", "te amo", "प्यार"];
-
-    // Simulated Live Chat Stream in all languages
-    const LIVE_USERS = [
-      { name: "Aarav_07", flag: "🇮🇳", text: "मैं तुमसे प्यार करता हूँ! So beautiful ❤️" },
-      { name: "Sophia_m", flag: "🇫🇷", text: "Je t'aime! Incroyable! 🌹✨" },
-      { name: "Carlos.R", flag: "🇪🇸", text: "Te amo tanto mi vida 💕" },
-      { name: "Yuki_99", flag: "🇯🇵", text: "すごく綺麗... 愛してる 🌸" },
-      { name: "Minho_k", flag: "🇰🇷", text: "사랑해! 대박이다 진짜 💖" },
-      { name: "Chen_Wei", flag: "🇨🇳", text: "我爱你！太浪漫了吧 🌹" },
-      { name: "Elena_V", flag: "🇷🇺", text: "Я тебя люблю! Прекрасно! ❤️" },
-      { name: "Liam_US", flag: "🇺🇸", text: "Sending tons of love from NYC! 🔥" },
-      { name: "Giulia_roma", flag: "🇮🇹", text: "Ti amo per sempre! Bellissimo 🌹" },
-      { name: "Fatima_dxb", flag: "🇦🇪", text: "أحبك ❤️ Wonderful art!" },
-      { name: "Priya_Sharma", flag: "🇮🇳", text: "बहुत ही प्यारा गुलाब है! 🌹✨" }
-    ];
-
-    // Geometry calculations
+    // Geometry of the Rose
     function isFlower(x, y) {
       const nx = (x - 400) / 185.0;
-      const ny = (y - 330) / 175.0;
+      const ny = (y - 325) / 175.0;
       if (nx * nx + ny * ny > 1.05) return false;
       if (ny > 0) {
         const maxW = (1.0 - ny * 0.72) * 1.05;
@@ -457,9 +472,9 @@
     }
 
     function isStem(x, y) {
-      if (y < 500 || y > 860) return false;
-      const stemX = 400 + 15 * Math.sin((y - 500) * 0.013);
-      return Math.abs(x - stemX) <= 8;
+      if (y < 490 || y > 860) return false;
+      const stemX = 400 + 15 * Math.sin((y - 490) * 0.013);
+      return Math.abs(x - stemX) <= 9;
     }
 
     function isLeftLeaf(x, y) {
@@ -468,7 +483,7 @@
       const rad = -32 * (Math.PI / 180);
       const rx = dx * Math.cos(rad) - dy * Math.sin(rad);
       const ry = dx * Math.sin(rad) + dy * Math.cos(rad);
-      return (rx / 74.0) ** 2 + (ry / 26.0) ** 2 <= 1.0;
+      return (rx / 75.0) ** 2 + (ry / 26.0) ** 2 <= 1.0;
     }
 
     function isRightLeaf(x, y) {
@@ -477,12 +492,12 @@
       const rad = 28 * (Math.PI / 180);
       const rx = dx * Math.cos(rad) - dy * Math.sin(rad);
       const ry = dx * Math.sin(rad) + dy * Math.cos(rad);
-      return (rx / 70.0) ** 2 + (ry / 24.0) ** 2 <= 1.0;
+      return (rx / 72.0) ** 2 + (ry / 25.0) ** 2 <= 1.0;
     }
 
     function isCalyx(x, y) {
-      if (y >= 500 && y <= 545) {
-        const maxD = 45 * (1 - (y - 500) / 45);
+      if (y >= 490 && y <= 540) {
+        const maxD = 48 * (1 - (y - 490) / 50);
         return Math.abs(x - 400) <= maxD + 8;
       }
       return false;
@@ -501,30 +516,24 @@
 
     const canvas = document.getElementById('roseCanvas');
     const ctx = canvas.getContext('2d');
-    const streamContainer = document.getElementById('streamContainer');
-    const heartsLayer = document.getElementById('heartsLayer');
-    const commentsContainer = document.getElementById('commentsContainer');
-    const progressFill = document.getElementById('progressFill');
-    const percentText = document.getElementById('percentText');
-    const viewerNum = document.getElementById('viewerNum');
-    const likeCountDisplay = document.getElementById('likeCountDisplay');
+    const appScreen = document.getElementById('appScreen');
+    const tapLayer = document.getElementById('tapLayer');
 
     let wordsToAnimate = [];
     let placedBoxes = [];
     let animIndex = 0;
     let animTimer = null;
-    let totalLikes = 84210;
 
     function generateWordPlan() {
       wordsToAnimate = [];
       placedBoxes = [];
       animIndex = 0;
 
-      // 1. Petals
-      const petalSizes = [10, 11, 12, 13, 14, 16, 18, 20];
-      for (let i = 0; i < 2200; i++) {
+      // 1. Petals with dynamic sizing
+      const petalSizes = [11, 12, 13, 14, 16, 18, 20, 22];
+      for (let i = 0; i < 2600; i++) {
         const cx = Math.floor(Math.random() * 420) + 190;
-        const cy = Math.floor(Math.random() * 400) + 130;
+        const cy = Math.floor(Math.random() * 390) + 130;
         if (isFlower(cx, cy)) {
           const phrase = PHRASES[Math.floor(Math.random() * PHRASES.length)];
           const size = petalSizes[Math.floor(Math.random() * petalSizes.length)];
@@ -535,17 +544,17 @@
           const box = [cx - w / 2 - GAP, cy - h / 2 - GAP, cx + w / 2 + GAP, cy + h / 2 + GAP];
           if (!collides(box, placedBoxes)) {
             placedBoxes.push(box);
-            const color = FLOWER_COLORS[Math.floor(Math.random() * FLOWER_COLORS.length)];
+            const color = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
             wordsToAnimate.push({ cx, cy, phrase, size, color });
           }
         }
       }
 
       // 2. Stem & Leaves
-      const leafSizes = [9, 10, 11, 12];
-      for (let i = 0; i < 1600; i++) {
+      const leafSizes = [10, 11, 12, 13];
+      for (let i = 0; i < 1800; i++) {
         const cx = Math.floor(Math.random() * 360) + 220;
-        const cy = Math.floor(Math.random() * 370) + 500;
+        const cy = Math.floor(Math.random() * 370) + 490;
         const inStem = isStem(cx, cy);
         const inLeft = isLeftLeaf(cx, cy);
         const inRight = isRightLeaf(cx, cy);
@@ -569,7 +578,7 @@
         }
       }
 
-      // Shuffle order
+      // Bloom shuffle
       for (let i = wordsToAnimate.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [wordsToAnimate[i], wordsToAnimate[j]] = [wordsToAnimate[j], wordsToAnimate[i]];
@@ -581,12 +590,13 @@
       for (let b = 0; b < batchSize; b++) {
         if (animIndex < wordsToAnimate.length) {
           const item = wordsToAnimate[animIndex];
-          ctx.font = `bold ${item.size}px "Poppins", "Segoe UI", "Noto Sans SC", "Noto Sans KR", "Noto Sans Devanagari", sans-serif`;
+          ctx.font = `bold ${item.size}px "Poppins", "Segoe UI", sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           
+          // Glowing Text
           ctx.shadowColor = item.color;
-          ctx.shadowBlur = 5;
+          ctx.shadowBlur = 6;
           ctx.fillStyle = item.color;
           ctx.fillText(item.phrase, item.cx, item.cy);
           ctx.shadowBlur = 0;
@@ -595,119 +605,133 @@
         }
       }
 
-      const pct = Math.min(100, Math.floor((animIndex / wordsToAnimate.length) * 100));
-      progressFill.style.width = pct + "%";
-      percentText.textContent = pct + "%";
-
       if (animIndex < wordsToAnimate.length) {
-        animTimer = setTimeout(drawBloom, 22);
+        animTimer = setTimeout(drawBloom, 20);
       }
     }
 
-    function startLiveStream() {
+    function startAnimation() {
       if (animTimer) clearTimeout(animTimer);
       ctx.clearRect(0, 0, W, H);
-      
-      // Canvas Title
-      ctx.font = 'bold 24px "Cinzel", "Segoe UI", serif';
-      ctx.fillStyle = "#ff4081";
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.shadowColor = 'rgba(255, 64, 129, 0.6)';
-      ctx.shadowBlur = 12;
-      ctx.fillText("1 ROSE, EVERY LANGUAGE", W / 2, 70);
-      ctx.shadowBlur = 0;
-
       generateWordPlan();
-      animTimer = setTimeout(drawBloom, 200);
+      animTimer = setTimeout(drawBloom, 300);
     }
 
-    // --- Floating Hearts & Tap Interaction ---
-    const HEART_ICONS = ["❤️", "💖", "🌹", "✨", "💕", "🌸", "🥰", "🔥"];
+    // --- Sparkling Stars in Background ---
+    const sCanvas = document.getElementById('sparkleCanvas');
+    const sCtx = sCanvas.getContext('2d');
+    let stars = [];
 
-    function spawnFloatingHeart(startX) {
+    function initSparkles() {
+      sCanvas.width = appScreen.clientWidth || 400;
+      sCanvas.height = appScreen.clientHeight || 750;
+      stars = [];
+      for (let i = 0; i < 45; i++) {
+        stars.push({
+          x: Math.random() * sCanvas.width,
+          y: Math.random() * sCanvas.height,
+          radius: Math.random() * 1.5 + 0.5,
+          alpha: Math.random(),
+          speed: Math.random() * 0.02 + 0.01
+        });
+      }
+    }
+
+    function animateSparkles() {
+      sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
+      for (let s of stars) {
+        s.alpha += s.speed;
+        if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
+        sCtx.fillStyle = `rgba(255, 192, 203, ${Math.abs(s.alpha)})`;
+        sCtx.beginPath();
+        sCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        sCtx.fill();
+      }
+      requestAnimationFrame(animateSparkles);
+    }
+
+    // --- Romantic Tap Interactions ---
+    const ROMANTIC_EMOJIS = ["❤️", "💖", "🌹", "✨", "💕", "🥰", "🌸", "💍"];
+
+    function spawnFloatingHeart(xRatio) {
       const heart = document.createElement('div');
       heart.className = 'floating-heart';
-      heart.textContent = HEART_ICONS[Math.floor(Math.random() * HEART_ICONS.length)];
+      heart.textContent = ROMANTIC_EMOJIS[Math.floor(Math.random() * ROMANTIC_EMOJIS.length)];
       
-      const x = startX !== undefined ? startX : (Math.random() * 80 + 10);
-      heart.style.right = (100 - x) + "%";
-      heart.style.animationDuration = (Math.random() * 1.2 + 1.8) + "s";
+      const x = xRatio !== undefined ? xRatio : (Math.random() * 80 + 10);
+      heart.style.left = x + "%";
+      heart.style.bottom = "80px";
+      heart.style.animationDuration = (Math.random() * 1.2 + 2.0) + "s";
       
-      heartsLayer.appendChild(heart);
-      setTimeout(() => heart.remove(), 2400);
+      tapLayer.appendChild(heart);
+      setTimeout(() => heart.remove(), 2600);
     }
 
-    // Tap anywhere effect
-    streamContainer.addEventListener('pointerdown', (e) => {
-      const rect = streamContainer.getBoundingClientRect();
+    appScreen.addEventListener('pointerdown', (e) => {
+      // Ignore if clicking on modal or buttons
+      if (e.target.closest('#photoModal') || e.target.closest('.action-btn')) return;
+
+      const rect = appScreen.getBoundingClientRect();
       const clientX = e.clientX - rect.left;
       const clientY = e.clientY - rect.top;
 
-      // Tap pop icon
-      const tapPop = document.createElement('div');
-      tapPop.className = 'tap-effect';
-      tapPop.textContent = HEART_ICONS[Math.floor(Math.random() * HEART_ICONS.length)];
-      tapPop.style.left = clientX + "px";
-      tapPop.style.top = clientY + "px";
-      streamContainer.appendChild(tapPop);
-      setTimeout(() => tapPop.remove(), 700);
+      // Pop Emoji
+      const pop = document.createElement('div');
+      pop.className = 'tap-pop';
+      pop.textContent = ROMANTIC_EMOJIS[Math.floor(Math.random() * ROMANTIC_EMOJIS.length)];
+      pop.style.left = clientX + "px";
+      pop.style.top = clientY + "px";
+      appScreen.appendChild(pop);
+      setTimeout(() => pop.remove(), 700);
 
-      // Increment Likes
-      totalLikes++;
-      likeCountDisplay.textContent = (totalLikes / 1000).toFixed(1) + "k";
-
-      // Spawn floating hearts from bottom right
-      spawnFloatingHeart(Math.random() * 25 + 70);
+      // Floating Hearts
+      spawnFloatingHeart((clientX / rect.width) * 100);
     });
 
-    // Auto Like Streams
+    // Continuous floating love ambient
     setInterval(() => {
-      spawnFloatingHeart(Math.random() * 25 + 72);
-      totalLikes += Math.floor(Math.random() * 4) + 1;
-      likeCountDisplay.textContent = (totalLikes / 1000).toFixed(1) + "k";
-    }, 450);
+      spawnFloatingHeart(Math.random() * 80 + 10);
+    }, 900);
 
-    // Live Viewer Fluctuations
-    setInterval(() => {
-      const count = (12.2 + Math.random() * 0.8).toFixed(1);
-      viewerNum.textContent = count + "k";
-    }, 3000);
-
-    // Live Comments Inflow
-    let commentIdx = 0;
-    function addLiveComment() {
-      const user = LIVE_USERS[commentIdx % LIVE_USERS.length];
-      commentIdx++;
-
-      const commentEl = document.createElement('div');
-      commentEl.className = 'comment-item';
-      commentEl.innerHTML = `<span class="comment-flag">${user.flag}</span> <span class="comment-user">${user.name}</span> <span class="comment-text">${user.text}</span>`;
-      
-      commentsContainer.appendChild(commentEl);
-
-      // Keep max 4 comments
-      if (commentsContainer.children.length > 4) {
-        commentsContainer.removeChild(commentsContainer.children[0]);
-      }
-
-      const nextDelay = Math.random() * 1800 + 1200;
-      setTimeout(addLiveComment, nextDelay);
-    }
-
-    // Gift Button Click
-    document.getElementById('giftBtn').addEventListener('click', (e) => {
+    // Love Burst Button Click
+    document.getElementById('loveBurstBtn').addEventListener('click', (e) => {
       e.stopPropagation();
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => spawnFloatingHeart(Math.random() * 30 + 65), i * 80);
+      for (let i = 0; i < 14; i++) {
+        setTimeout(() => {
+          spawnFloatingHeart(Math.random() * 80 + 10);
+        }, i * 65);
       }
-      totalLikes += 50;
-      likeCountDisplay.textContent = (totalLikes / 1000).toFixed(1) + "k";
     });
 
-    // Start Everything
-    startLiveStream();
-    setTimeout(addLiveComment, 800);
+    // --- Photo Modal Click Handler ---
+    const photoModal = document.getElementById('photoModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalQuote = document.getElementById('modalQuote');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+    document.querySelectorAll('.heart-bubble').forEach(bubble => {
+      bubble.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const imgSrc = bubble.getAttribute('data-img');
+        const quote = bubble.getAttribute('data-quote');
+        modalImg.src = imgSrc;
+        modalQuote.textContent = quote;
+        photoModal.style.display = 'flex';
+      });
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+      photoModal.style.display = 'none';
+    });
+    photoModal.addEventListener('click', (e) => {
+      if (e.target === photoModal) photoModal.style.display = 'none';
+    });
+
+    // Start everything
+    window.addEventListener('resize', initSparkles);
+    initSparkles();
+    animateSparkles();
+    startAnimation();
   </script>
 </body>
 </html>
